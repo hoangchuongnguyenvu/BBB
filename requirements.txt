@@ -18,7 +18,6 @@ pandas
 # File & I/O Handling
 requests
 uuid
-tempfile
 
 # Optional but recommended
 python-dotenv  # For environment variables management
