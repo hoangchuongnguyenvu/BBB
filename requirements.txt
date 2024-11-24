@@ -17,7 +17,6 @@ pandas
 
 # File & I/O Handling
 requests
-io
 uuid
 tempfile
 
