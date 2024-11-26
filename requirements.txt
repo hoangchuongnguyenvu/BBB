@@ -1,8 +1,10 @@
 numpy
 Pillow
 streamlit
-opencv-python-headless==4.5.5.64
-streamlit-drawable-canvas
+matplotlib
+opencv-python-headless
+streamlit-drawable-canvas==0.8.0
+google-cloud-firestore
 pandas
 scipy
 scikit-learn
@@ -10,3 +12,6 @@ firebase-admin
 requests
 uuid
 python-dotenv 
+PyQt6
+torch
+tqdm
