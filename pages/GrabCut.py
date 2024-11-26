@@ -12,100 +12,16 @@ init_session_state()
 
 st.set_page_config(
     page_title="Ứng dụng tách nền bằng thuật toán GrabCut",
-    #page_icon=Image.open("./public/images/logo.png"),
     layout="wide",
-    initial_sidebar_state="expanded",
+    initial_sidebar_state="expanded"
 )
 
-# Thêm CSS để xóa tất cả khung viền
-st.markdown("""
-    <style>
-    /* Xóa border cho tất cả container */
-    .element-container {
-        border: none !important;
-        box-shadow: none !important;
-    }
-    
-    /* Xóa border cho file uploader */
-    .stFileUploader {
-        border: none !important;
-        box-shadow: none !important;
-    }
-    
-    /* Xóa border cho selectbox */
-    .stSelectbox {
-        border: none !important;
-    }
-    
-    /* Xóa border cho slider */
-    .stSlider {
-        border: none !important;
-    }
-    
-    /* Xóa border cho tất cả các div */
-    div[data-testid="stBlock"] {
-        border: none !important;
-        box-shadow: none !important;
-    }
-    
-    /* Xóa border cho canvas */
-    .canvas-container {
-        border: none !important;
-    }
-    
-    /* Xóa border cho image */
-    div[data-testid="stImage"] {
-        border: none !important;
-        box-shadow: none !important;
-    }
-    
-    /* Xóa border cho button */
-    .stButton {
-        border: none !important;
-    }
-    
-    /* Thêm CSS mới để xóa khung cho phần hướng dẫn */
-    div[data-testid="stMarkdown"] {
-        border: none !important;
-        box-shadow: none !important;
-        background-color: transparent !important;
-    }
-    
-    /* Xóa border cho tt cả các block */
-    [data-testid="stBlock"] {
-        border: none !important;
-        box-shadow: none !important;
-        background-color: transparent !important;
-    }
-    
-    /* Xóa border cho tất cả các container */
-    .block-container {
-        border: none !important;
-        box-shadow: none !important;
-        background-color: transparent !important;
-    }
-    
-    /* Xóa border cho các thẻ div chứa nội dung */
-    div.stMarkdown {
-        border: none !important;
-        box-shadow: none !important;
-        background-color: transparent !important;
-        padding: 0 !important;
-    }
-    </style>
-""", unsafe_allow_html=True)
 
-# Tạo slider với JavaScript để cập nhật giá trị gradient
-
-# Thêm CSS để tùy chỉnh độ dày của thanh slider dựa trên giá trị
-
-# Tạo slider và cập nhật CSS variable
-# Thiết lập tiêu đề
-st.title("ỨNG DỤNG TÁCH NỀN BẰNG THUẬT TOÁN GRABCUT")
+st.title("GrabCut Segmentation")
 
 with st.container():
     uploaded_image = st.file_uploader(
-        ":material/image: Chọn hoặc kéo ảnh vào ô bên dưới", type=["jpg", "jpeg", "png"]
+        ":material/image: Choose or drag and drop an image below", type=["jpg", "jpeg", "png"]
     )
 
 if uploaded_image is not None:
@@ -119,8 +35,8 @@ if uploaded_image is not None:
                     <li>Vẽ hình chữ nhật lên ảnh để chọn vùng cần tách nền.</li>
                     <li>Chọn chế độ vẽ và vẽ lên ảnh để chỉ định:
                         <ul>
-                            <li>🟢 <b>Vùng giữ lại</b>: Vẽ màu xanh cho vùng chắc chắn giữ lại</li>
-                            <li>🔴 <b>Vùng loại bỏ</b>: Vẽ màu đỏ cho vùng chắc chắn loại bỏ</li>
+                            <li>🟢 <b>Sure Foreground</b>: Vẽ màu xanh cho vùng chắc chắn là foreground</li>
+                            <li>🔴 <b>Sure Background</b>: Vẽ màu đỏ cho vùng chắc chắn là background</li>
                         </ul>
                     </li>
                     <li>Ấn nút "Apply GrabCut" để xem kết quả.</li>
