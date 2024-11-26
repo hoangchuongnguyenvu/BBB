@@ -1,23 +1,12 @@
-# Core Libraries
 numpy
-opencv-python-headless
 Pillow
 streamlit
-
-# Computer Vision & Image Processing
-firebase-admin
+opencv-python-headless==4.5.5.64
+streamlit-drawable-canvas
+pandas
 scipy
 scikit-learn
-
-# Streamlit Components
-streamlit-drawable-canvas
-
-# Data Processing
-pandas
-
-# File & I/O Handling
+firebase-admin
 requests
 uuid
-
-# Optional but recommended
-python-dotenv  # For environment variables management
+python-dotenv 
