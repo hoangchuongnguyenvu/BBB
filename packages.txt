@@ -1,6 +1,5 @@
 libgl1
-libglib2.0-0
-libsm6
-libxextibxrender-dev
+ibglib2.0-0
+ibsm6
 ibxext6
-
+ibxrender-dev
