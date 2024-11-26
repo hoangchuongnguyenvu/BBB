@@ -67,12 +67,12 @@ def display_form_draw():
     cols = st.columns(2)
 
     drawing_mode = cols[0].selectbox(
-        ":material/draw: Chọn chế độ",
+        "🎨 Chọn chế độ", 
         ["rect", "sure_bg", "sure_fg"],
         format_func=format_func,
     )
 
-    stroke_width = cols[1].slider(":material/pen_size_3: Độ dày nét vẽ", 1, 10, 4)
+    stroke_width = cols[1].slider("🖌️ Độ dày", 1, 10, 4)
 
     return (drawing_mode, stroke_width)
 
