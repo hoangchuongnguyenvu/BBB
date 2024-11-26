@@ -14,6 +14,19 @@ def init_session_state():
             st.session_state[key] = None
 
 
+def display_guide():
+    st.markdown(
+        """
+        #### :material/developer_guide: Hướng dẫn sử dụng
+        1. Chọn ảnh cần tách nền.
+        2. Chọn **chế độ vẽ** và **độ dày nét vẽ**.
+        3. Vẽ hình chữ nhật lên ảnh để chọn vùng cần tách nền.
+        4. Chọn **chế độ vẽ** và vẽ lên ảnh để chỉ định vùng cần giữ lại hoặc loại bỏ.
+        5. Ấn nút `Tách nền` để xem kết quả.
+        """
+    )
+
+
 def display_st_canvas(raw_image: Image.Image, drawing_mode: str, stroke_width: int):
     w, h = raw_image.size
     width = min(w, 475)
@@ -44,22 +57,24 @@ def display_st_canvas(raw_image: Image.Image, drawing_mode: str, stroke_width: i
 
 
 def display_form_draw():
-    # Phần chọn chế độ vẽ
-    drawing_mode = st.selectbox(
-        "🎨 Chọn chế độ",
-        options=[
-            "Chọn vùng cần tách nền",
-            "Vùng giữ lại (sure foreground)",
-            "Vùng loại bỏ (sure background)"
-        ],
-        format_func=lambda x: f"{x} {'🟢' if 'giữ lại' in x else '🔴' if 'loại bỏ' in x else '⬜'}",
-        key="drawing_mode"
+    def format_func(option):
+        if option == "rect":
+            return "Chọn vùng cần tách nền ⬜"
+        if option == "sure_bg":
+            return "Chọn vùng cần loại bỏ (sure background) 🔴"
+        return "Chọn vùng cần giữ lại (sure foreground) 🟢"
+
+    cols = st.columns(2)
+
+    drawing_mode = cols[0].selectbox(
+        ":material/draw: Chọn chế độ",
+        ["rect", "sure_bg", "sure_fg"],
+        format_func=format_func,
     )
 
-    # Phần chọn độ dày nét vẽ
-    stroke_width = st.slider("✏️ Độ dày nét vẽ", 1, 10, 2)
-    
-    return drawing_mode, stroke_width
+    stroke_width = cols[1].slider(":material/pen_size_3: Độ dày nét vẽ", 1, 10, 2)
+
+    return (drawing_mode, stroke_width)
 
 
 def process_grabcut(
