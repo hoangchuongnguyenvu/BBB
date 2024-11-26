@@ -59,10 +59,10 @@ def display_st_canvas(raw_image: Image.Image, drawing_mode: str, stroke_width: i
 def display_form_draw():
     def format_func(option):
         if option == "rect":
-            return "Chọn vùng cần tách nền ⬜"
+            return "Chọn ROI (Region of Interest) ⬜"
         if option == "sure_bg":
-            return "Chọn vùng cần loại bỏ (sure background) 🔴"
-        return "Chọn vùng cần giữ lại (sure foreground) 🟢"
+            return "Chọn vùng chắc chắn là đối tượng (Sure Foreground) 🟢"
+        return "Chọn vùng chắc chắn là nền (Sure Background) 🔴"
 
     cols = st.columns(2)
 
@@ -72,7 +72,7 @@ def display_form_draw():
         format_func=format_func,
     )
 
-    stroke_width = cols[1].slider(":material/pen_size_3: Độ dày nét vẽ", 1, 10, 2)
+    stroke_width = cols[1].slider(":material/pen_size_3: Độ dày nét vẽ", 1, 10, 4)
 
     return (drawing_mode, stroke_width)
 
