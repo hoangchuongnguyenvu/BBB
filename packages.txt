@@ -2,10 +2,5 @@ libgl1
 libglib2.0-0
 libsm6
 libxextibxrender-dev
-fmpeg
-ibsm6
 ibxext6
-ibfontconfig1
-ibxrender1
-ibice6
-ibgomp1
+
